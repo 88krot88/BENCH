@@ -77,10 +77,10 @@
 			WidthBoardLabel.TabIndex = 5;
 			WidthBoardLabel.Text = "Ширина ножки";
 			// 
-			// lengthTextBox
+			// LengthTextBox
 			// 
 			LengthTextBox.Location = new Point(156, 7);
-			LengthTextBox.Name = "lengthTextBox";
+			LengthTextBox.Name = "LengthTextBox";
 			LengthTextBox.Size = new Size(112, 27);
 			LengthTextBox.TabIndex = 12;
 			// 
@@ -91,17 +91,17 @@
 			HeightTextBox.Size = new Size(112, 27);
 			HeightTextBox.TabIndex = 13;
 			// 
-			// LengthBoardTextBox
+			// LegLengthTextBox
 			// 
 			LegLengthTextBox.Location = new Point(156, 127);
-			LegLengthTextBox.Name = "LengthBoardTextBox";
+			LegLengthTextBox.Name = "LegLengthTextBox";
 			LegLengthTextBox.Size = new Size(112, 27);
 			LegLengthTextBox.TabIndex = 14;
 			// 
-			// WidthBoardTextBox
+			// LegWidthTextBox
 			// 
 			LegWidthTextBox.Location = new Point(156, 188);
-			LegWidthTextBox.Name = "WidthBoardTextBox";
+			LegWidthTextBox.Name = "LegWidthTextBox";
 			LegWidthTextBox.Size = new Size(112, 27);
 			LegWidthTextBox.TabIndex = 16;
 			// 
@@ -159,10 +159,10 @@
 			HeigthLegMeaning.TabIndex = 40;
 			HeigthLegMeaning.Text = "10-20см";
 			// 
-			// HeightLegBoardTextBox
+			// SeatHeightTextBox
 			// 
 			SeatHeightTextBox.Location = new Point(156, 256);
-			SeatHeightTextBox.Name = "HeightLegBoardTextBox";
+			SeatHeightTextBox.Name = "SeatHeightTextBox";
 			SeatHeightTextBox.Size = new Size(112, 27);
 			SeatHeightTextBox.TabIndex = 39;
 			// 
@@ -226,6 +226,7 @@
 			Controls.Add(WidthBoardLabel);
 			Controls.Add(HeightLabel);
 			Controls.Add(lengthLabel);
+			MinimumSize = new Size(200, 200);
 			Name = "MainViewModel";
 			Text = "Panel";
 			groupBox1.ResumeLayout(false);
