@@ -146,8 +146,8 @@
 			{
 				_legWidth = Validator.SetValueInRange(
 					value,
-					MinLegWidth,
-					MaxLegWidth,
+                    MinLegWidth,
+                    MaxLegWidth,
 					"Ширина ножек"
 				);
 			}
@@ -163,8 +163,8 @@
 			{
 				_seatWidth = Validator.SetValueInRange(
 					value,
-					MinSeatWidth,
-					MaxSeatWidth,
+                    MinSeatWidth,
+                    MaxSeatWidth,
 					"Ширина сиденья"
 				);
 			}

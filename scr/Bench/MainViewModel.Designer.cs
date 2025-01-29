@@ -43,11 +43,7 @@
             HeigthLegMeaning = new Label();
             SeatHeightTextBox = new TextBox();
             HeightLeg = new Label();
-            groupBox1 = new GroupBox();
-            pictureBox1 = new PictureBox();
             ButtonKOMPAC = new Button();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lengthLabel
@@ -175,25 +171,6 @@
             HeightLeg.TabIndex = 38;
             HeightLeg.Text = "Ширина сидушки";
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(pictureBox1);
-            groupBox1.Location = new Point(446, 14);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(705, 364);
-            groupBox1.TabIndex = 41;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Чертеж скамьи";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.чертеж;
-            pictureBox1.Location = new Point(15, 26);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(684, 332);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
             // ButtonKOMPAC
             // 
             ButtonKOMPAC.Location = new Point(100, 347);
@@ -208,9 +185,8 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(436, 394);
+            ClientSize = new Size(413, 394);
             Controls.Add(ButtonKOMPAC);
-            Controls.Add(groupBox1);
             Controls.Add(HeigthLegMeaning);
             Controls.Add(SeatHeightTextBox);
             Controls.Add(HeightLeg);
@@ -229,8 +205,6 @@
             MinimumSize = new Size(223, 200);
             Name = "MainViewModel";
             Text = "Panel";
-            groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -251,9 +225,7 @@
         private Label HeigthLegMeaning;
         private TextBox SeatHeightTextBox;
         private Label HeightLeg;
-        private GroupBox groupBox1;
         private Button ButtonKOMPAC;
         private object ButtonOpenGL_Click;
-        private PictureBox pictureBox1;
     }
 }
