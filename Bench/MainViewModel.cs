@@ -22,29 +22,78 @@ namespace Bench
 			_benchBuilder = new BenchBuilder(_benchWrapper);
 		}
 
-		/// <summary>
-		/// Обработчик нажатия на кнопку построения модели скамьи.
-		/// </summary>
 		private void BuildButton_Click(object sender, EventArgs e)
 		{
+			var parameters = new Dictionary<TextBox, (string Name, Func<double, double> Validator)>
+		{
+			{ LengthTextBox, ("Длина скамьи", value => Validator.SetValueInRange(value, 100, 200, "Длина скамьи")) },
+			{ HeightTextBox, ("Высота скамьи", value => Validator.SetValueInRange(value, 50, 70, "Высота скамьи")) },
+			{ LegLengthTextBox, ("Длина ножки", value => Validator.SetValueInRange(value, 20, 30, "Длина ножки")) },
+			{ LegWidthTextBox, ("Ширина ножки", value => Validator.SetValueInRange(value, 20, 50, "Ширина ножки")) },
+			{ SeatHeightTextBox, ("Ширина сиденья", value => Validator.SetValueInRange(value, 10, 20, "Ширина сиденья")) }
+		};
+
+			var errors = new List<string>(); 
+			var validatedValues = new List<double>(); 
+
+			foreach (var (textBox, (paramName, validator)) in parameters)
+			{
+				try
+				{
+					double value = Validator.ConvertToDouble(textBox.Text, paramName);
+
+					value = validator(value);
+
+					textBox.BackColor = Color.LightGreen; 
+					validatedValues.Add(value);
+				}
+				catch (ArgumentException ex)
+				{
+					textBox.BackColor = Color.LightCoral; 
+					errors.Add(ex.Message);
+				}
+			}
+
+			if (errors.Count > 0)
+			{
+				MessageBox.Show(string.Join(Environment.NewLine, errors), "Ошибки ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
 			try
 			{
-				var parameters = new BenchParameters(
-					Validator.ConvertToDouble(LengthTextBox.Text, "Длина скамьи"),
-					Validator.ConvertToDouble(HeightTextBox.Text, "Высота скамьи"),
-					Validator.ConvertToDouble(LegLengthTextBox.Text, "Длина ножки"),
-					Validator.ConvertToDouble(LegWidthTextBox.Text, "Ширина ножки"),
-					Validator.ConvertToDouble(SeatHeightTextBox.Text, "Ширина сиденья")
+				var benchParameters = new BenchParameters(
+					validatedValues[0], 
+					validatedValues[1], 
+					validatedValues[2], 
+					validatedValues[3], 
+					validatedValues[4]  
 				);
 
 				_benchWrapper.ConnectToKompas();
-				_benchBuilder.BuildBench(parameters);
+				_benchBuilder.BuildBench(benchParameters);
+
+				MessageBox.Show("Скамья успешно построена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				ResetTextBoxColors();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-    }
+
+		/// <summary>
+		/// Сбрасывает цвета текстбоксов в стандартное состояние.
+		/// </summary>
+		private void ResetTextBoxColors()
+		{
+			var textBoxes = new[] { LengthTextBox, HeightTextBox, LegLengthTextBox, LegWidthTextBox, SeatHeightTextBox };
+			foreach (var textBox in textBoxes)
+			{
+				textBox.BackColor = SystemColors.Window;
+			}
+		}
+
+	}
 }
 
