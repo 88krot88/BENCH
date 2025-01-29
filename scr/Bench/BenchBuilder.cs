@@ -59,24 +59,36 @@ namespace Bench
 		/// <param name="parameters">Параметры скамьи.</param>
 		private void BuildLegs(ksPart part, BenchParameters parameters)
 		{
-			BuildBoard(part, parameters.LegWidth, parameters.LegWidth, parameters.LegLength, 0, 0);
-			BuildBoard(
-				part,
-				parameters.LegWidth,
-				parameters.LegWidth,
-				parameters.LegLength,
-				parameters.BenchLength - parameters.LegWidth, 0);
-		}
+            double legWidth = parameters.LegWidth;
+            double legHeight = parameters.LegLength;
+            double seatDepth = parameters.SeatWidth; // Глубина сиденья
 
-		/// <summary>
-		/// Выполняет построение сиденья.
-		/// </summary>
-		/// <param name="part">Экземпляр класса ksPart для создания нового элемента модели.</param>
-		/// <param name="parameters">Параметры скамьи.</param>
-		private void BuildSeat(ksPart part, BenchParameters parameters)
+            // Левая ножка (у одного края сиденья)
+            BuildBoard(part, legWidth, legHeight, legWidth, 0, 0);
+
+            // Правая ножка (смещаем по всей длине сиденья и размещаем по глубине)
+            double offsetX = parameters.BenchLength - legWidth;
+            double offsetY = seatDepth - legWidth; // Смещаем в глубину
+            BuildBoard(part, legWidth, legHeight, legWidth, offsetX, offsetY);
+        }
+
+
+        /// <summary>
+        /// Выполняет построение сиденья.
+        /// </summary>
+        /// <param name="part">Экземпляр класса ksPart для создания нового элемента модели.</param>
+        /// <param name="parameters">Параметры скамьи.</param>
+        private void BuildSeat(ksPart part, BenchParameters parameters)
 		{
 			var thickness = 20;
-			BuildBoard(part, parameters.BenchLength, parameters.SeatWidth, thickness, 0, 0);
+
+			BuildBoard(
+				part, 
+				parameters.BenchLength, 
+				parameters.SeatWidth, 
+				thickness, 
+				0, 
+				parameters.LegLength);
 		}
 
 		/// <summary>
