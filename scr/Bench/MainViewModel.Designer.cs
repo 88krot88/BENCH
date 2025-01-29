@@ -205,6 +205,7 @@
             MinimumSize = new Size(223, 200);
             Name = "MainViewModel";
             Text = "Panel";
+            Load += MainViewModel_Load;
             ResumeLayout(false);
             PerformLayout();
         }
