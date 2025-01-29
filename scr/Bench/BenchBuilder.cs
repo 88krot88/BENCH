@@ -65,8 +65,7 @@ namespace Bench
 				parameters.LegWidth,
 				parameters.LegWidth,
 				parameters.LegLength,
-				parameters.BenchLength - parameters.LegWidth,
-				0);
+				parameters.BenchLength - parameters.LegWidth, 0);
 		}
 
 		/// <summary>

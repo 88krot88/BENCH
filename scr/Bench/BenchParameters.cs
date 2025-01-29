@@ -68,22 +68,22 @@
 		/// <summary>
 		/// Минимальная ширина ножки скамьи.
 		/// </summary>
-		private const double MinLegWidth = 20;
+		private const double MinLegWidth = 80;
 
 		/// <summary>
 		/// Максимальная ширина ножки скамьи.
 		/// </summary>
-		private const double MaxLegWidth = 50;
+		private const double MaxLegWidth = 120;
 
 		/// <summary>
-		/// Минимальная длина ширина сиденья.
+		/// Минимальная ширина сиденья.
 		/// </summary>
-		private const double MinSeatWidth = 10;
+		private const double MinSeatWidth = 80;
 
 		/// <summary>
-		/// Максимальная длина ширина сиденья.
+		/// Максимальная ширина сиденья.
 		/// </summary>
-		private const double MaxSeatWidth = 20;
+		private const double MaxSeatWidth = 120;
 
 		/// <summary>
 		/// Свойство для длины скамьи.
