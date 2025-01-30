@@ -68,22 +68,22 @@
 		/// <summary>
 		/// Минимальная ширина ножки скамьи.
 		/// </summary>
-		private const double MinLegWidth = 80;
+		private const double MinLegWidth = 30;
 
 		/// <summary>
 		/// Максимальная ширина ножки скамьи.
 		/// </summary>
-		private const double MaxLegWidth = 120;
+		private const double MaxLegWidth = 60;
 
 		/// <summary>
-		/// Минимальная ширина сиденья.
+		/// Минимальная длина ширина сиденья.
 		/// </summary>
-		private const double MinSeatWidth = 80;
+		private const double MinSeatWidth = 30;
 
 		/// <summary>
-		/// Максимальная ширина сиденья.
+		/// Максимальная длина ширина сиденья.
 		/// </summary>
-		private const double MaxSeatWidth = 120;
+		private const double MaxSeatWidth = 60;
 
 		/// <summary>
 		/// Свойство для длины скамьи.
@@ -146,8 +146,8 @@
 			{
 				_legWidth = Validator.SetValueInRange(
 					value,
-                    MinLegWidth,
-                    MaxLegWidth,
+					MinLegWidth,
+					MaxLegWidth,
 					"Ширина ножек"
 				);
 			}
@@ -163,8 +163,8 @@
 			{
 				_seatWidth = Validator.SetValueInRange(
 					value,
-                    MinSeatWidth,
-                    MaxSeatWidth,
+					MinSeatWidth,
+					MaxSeatWidth,
 					"Ширина сиденья"
 				);
 			}

@@ -8,7 +8,7 @@ namespace Bench
         private BenchWrapper _benchWrapper;
 
         /// <summary>
-        /// Экземпляр класса BenchWrapper для построения скамьи.
+        /// Экземпляр класса BenchBuilder для построения скамьи.
         /// </summary>
         private BenchBuilder _benchBuilder;
 
@@ -25,13 +25,13 @@ namespace Bench
         private void BuildButton_Click(object sender, EventArgs e)
         {
             var parameters = new Dictionary<TextBox, (string Name, Func<double, double> Validator)>
-        {
-            { LengthTextBox, ("Длина скамьи", value => Validator.SetValueInRange(value, 100, 200, "Длина скамьи")) },
-            { HeightTextBox, ("Высота скамьи", value => Validator.SetValueInRange(value, 50, 70, "Высота скамьи")) },
-            { LegLengthTextBox, ("Длина ножки", value => Validator.SetValueInRange(value, 20, 30, "Длина ножки")) },
-            { LegWidthTextBox, ("Ширина ножки", value => Validator.SetValueInRange(value, 80, 120, "Ширина ножки")) },
-            { SeatHeightTextBox, ("Ширина сиденья", value => Validator.SetValueInRange(value, 80, 120, "Ширина сиденья")) }
-        };
+            {
+                { LengthTextBox, ("Длина скамьи", value => Validator.SetValueInRange(value, 100, 200, "Длина скамьи")) },
+                { HeightTextBox, ("Высота скамьи", value => Validator.SetValueInRange(value, 50, 70, "Высота скамьи")) },
+                { LegLengthTextBox, ("Длина ножки", value => Validator.SetValueInRange(value, 20, 30, "Длина ножки")) },
+                { LegWidthTextBox, ("Ширина ножки", value => Validator.SetValueInRange(value, 30, 60, "Ширина ножки")) },
+                { SeatHeightTextBox, ("Ширина сиденья", value => Validator.SetValueInRange(value, 30, 60, "Ширина сиденья")) }
+            };
 
             var errors = new List<string>();
             var validatedValues = new List<double>();
@@ -41,7 +41,6 @@ namespace Bench
                 try
                 {
                     double value = Validator.ConvertToDouble(textBox.Text, paramName);
-
                     value = validator(value);
 
                     textBox.BackColor = Color.LightGreen;
@@ -63,11 +62,11 @@ namespace Bench
             try
             {
                 var benchParameters = new BenchParameters(
-                    validatedValues[0],
-                    validatedValues[1],
-                    validatedValues[2],
-                    validatedValues[3],
-                    validatedValues[4]
+                    validatedValues[0], // Длина скамьи
+                    validatedValues[1], // Высота скамьи
+                    validatedValues[2], // Длина ножки
+                    validatedValues[3], // Ширина ножки
+                    validatedValues[4]  // Ширина сиденья
                 );
 
                 _benchWrapper.ConnectToKompas();
@@ -103,4 +102,3 @@ namespace Bench
         }
     }
 }
-

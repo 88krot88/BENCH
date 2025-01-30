@@ -106,9 +106,9 @@
             WidthBoardMeaning.AutoSize = true;
             WidthBoardMeaning.Location = new Point(318, 188);
             WidthBoardMeaning.Name = "WidthBoardMeaning";
-            WidthBoardMeaning.Size = new Size(79, 20);
+            WidthBoardMeaning.Size = new Size(70, 20);
             WidthBoardMeaning.TabIndex = 27;
-            WidthBoardMeaning.Text = "80-120см";
+            WidthBoardMeaning.Text = "30-60см";
             // 
             // LengthBoardMeaning
             // 
@@ -151,9 +151,9 @@
             HeigthLegMeaning.AutoSize = true;
             HeigthLegMeaning.Location = new Point(318, 256);
             HeigthLegMeaning.Name = "HeigthLegMeaning";
-            HeigthLegMeaning.Size = new Size(79, 20);
+            HeigthLegMeaning.Size = new Size(70, 20);
             HeigthLegMeaning.TabIndex = 40;
-            HeigthLegMeaning.Text = "80-120см";
+            HeigthLegMeaning.Text = "30-60см";
             // 
             // SeatHeightTextBox
             // 
