@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             lengthLabel = new Label();
-            HeightLabel = new Label();
-            WidthBoardLabel = new Label();
+            SeatHeightLabel = new Label();
+            LegLengthLabel = new Label();
             LengthTextBox = new TextBox();
-            HeightTextBox = new TextBox();
-            LegLengthTextBox = new TextBox();
-            LegWidthTextBox = new TextBox();
-            WidthBoardMeaning = new Label();
-            LengthBoardMeaning = new Label();
-            HeigthMeaning = new Label();
-            LengthMeaning = new Label();
-            LengthBoardLabel = new Label();
-            HeigthLegMeaning = new Label();
             SeatHeightTextBox = new TextBox();
-            HeightLeg = new Label();
+            LegHeightTextBox = new TextBox();
+            LegLengthTextBox = new TextBox();
+            LegLengthMeaning = new Label();
+            LegHeightMeaning = new Label();
+            SeatHeigthMeaning = new Label();
+            LengthMeaning = new Label();
+            LegHeightLabel = new Label();
+            SeatWidthMeaning = new Label();
+            SeatWidthTextBox = new TextBox();
+            SeatWidthtLeg = new Label();
             ButtonKOMPAC = new Button();
             SuspendLayout();
             // 
@@ -55,23 +55,23 @@
             lengthLabel.TabIndex = 1;
             lengthLabel.Text = "Длина скамьи";
             // 
-            // HeightLabel
+            // SeatHeightLabel
             // 
-            HeightLabel.AutoSize = true;
-            HeightLabel.Location = new Point(12, 70);
-            HeightLabel.Name = "HeightLabel";
-            HeightLabel.Size = new Size(118, 20);
-            HeightLabel.TabIndex = 2;
-            HeightLabel.Text = "Высота скамьи";
+            SeatHeightLabel.AutoSize = true;
+            SeatHeightLabel.Location = new Point(12, 70);
+            SeatHeightLabel.Name = "SeatHeightLabel";
+            SeatHeightLabel.Size = new Size(125, 20);
+            SeatHeightLabel.TabIndex = 2;
+            SeatHeightLabel.Text = "Высота сиденья";
             // 
-            // WidthBoardLabel
+            // LegLengthLabel
             // 
-            WidthBoardLabel.AutoSize = true;
-            WidthBoardLabel.Location = new Point(12, 188);
-            WidthBoardLabel.Name = "WidthBoardLabel";
-            WidthBoardLabel.Size = new Size(120, 20);
-            WidthBoardLabel.TabIndex = 5;
-            WidthBoardLabel.Text = "Ширина ножки";
+            LegLengthLabel.AutoSize = true;
+            LegLengthLabel.Location = new Point(12, 188);
+            LegLengthLabel.Name = "LegLengthLabel";
+            LegLengthLabel.Size = new Size(108, 20);
+            LegLengthLabel.TabIndex = 5;
+            LegLengthLabel.Text = "Длина ножки";
             // 
             // LengthTextBox
             // 
@@ -80,53 +80,53 @@
             LengthTextBox.Size = new Size(126, 27);
             LengthTextBox.TabIndex = 12;
             // 
-            // HeightTextBox
+            // SeatHeightTextBox
             // 
-            HeightTextBox.Location = new Point(176, 67);
-            HeightTextBox.Name = "HeightTextBox";
-            HeightTextBox.Size = new Size(126, 27);
-            HeightTextBox.TabIndex = 13;
+            SeatHeightTextBox.Location = new Point(176, 67);
+            SeatHeightTextBox.Name = "SeatHeightTextBox";
+            SeatHeightTextBox.Size = new Size(126, 27);
+            SeatHeightTextBox.TabIndex = 13;
+            // 
+            // LegHeightTextBox
+            // 
+            LegHeightTextBox.Location = new Point(176, 127);
+            LegHeightTextBox.Name = "LegHeightTextBox";
+            LegHeightTextBox.Size = new Size(126, 27);
+            LegHeightTextBox.TabIndex = 14;
             // 
             // LegLengthTextBox
             // 
-            LegLengthTextBox.Location = new Point(176, 127);
+            LegLengthTextBox.Location = new Point(176, 188);
             LegLengthTextBox.Name = "LegLengthTextBox";
             LegLengthTextBox.Size = new Size(126, 27);
-            LegLengthTextBox.TabIndex = 14;
+            LegLengthTextBox.TabIndex = 16;
             // 
-            // LegWidthTextBox
+            // LegLengthMeaning
             // 
-            LegWidthTextBox.Location = new Point(176, 188);
-            LegWidthTextBox.Name = "LegWidthTextBox";
-            LegWidthTextBox.Size = new Size(126, 27);
-            LegWidthTextBox.TabIndex = 16;
+            LegLengthMeaning.AutoSize = true;
+            LegLengthMeaning.Location = new Point(318, 188);
+            LegLengthMeaning.Name = "LegLengthMeaning";
+            LegLengthMeaning.Size = new Size(70, 20);
+            LegLengthMeaning.TabIndex = 27;
+            LegLengthMeaning.Text = "20-50см";
             // 
-            // WidthBoardMeaning
+            // LegHeightMeaning
             // 
-            WidthBoardMeaning.AutoSize = true;
-            WidthBoardMeaning.Location = new Point(318, 188);
-            WidthBoardMeaning.Name = "WidthBoardMeaning";
-            WidthBoardMeaning.Size = new Size(70, 20);
-            WidthBoardMeaning.TabIndex = 27;
-            WidthBoardMeaning.Text = "30-60см";
+            LegHeightMeaning.AutoSize = true;
+            LegHeightMeaning.Location = new Point(318, 130);
+            LegHeightMeaning.Name = "LegHeightMeaning";
+            LegHeightMeaning.Size = new Size(70, 20);
+            LegHeightMeaning.TabIndex = 25;
+            LegHeightMeaning.Text = "20-40см";
             // 
-            // LengthBoardMeaning
+            // SeatHeigthMeaning
             // 
-            LengthBoardMeaning.AutoSize = true;
-            LengthBoardMeaning.Location = new Point(318, 130);
-            LengthBoardMeaning.Name = "LengthBoardMeaning";
-            LengthBoardMeaning.Size = new Size(70, 20);
-            LengthBoardMeaning.TabIndex = 25;
-            LengthBoardMeaning.Text = "20-30см";
-            // 
-            // HeigthMeaning
-            // 
-            HeigthMeaning.AutoSize = true;
-            HeigthMeaning.Location = new Point(318, 70);
-            HeigthMeaning.Name = "HeigthMeaning";
-            HeigthMeaning.Size = new Size(89, 20);
-            HeigthMeaning.TabIndex = 24;
-            HeigthMeaning.Text = "50см-70см";
+            SeatHeigthMeaning.AutoSize = true;
+            SeatHeigthMeaning.Location = new Point(318, 70);
+            SeatHeigthMeaning.Name = "SeatHeigthMeaning";
+            SeatHeigthMeaning.Size = new Size(89, 20);
+            SeatHeigthMeaning.TabIndex = 24;
+            SeatHeigthMeaning.Text = "10см-25см";
             // 
             // LengthMeaning
             // 
@@ -137,39 +137,39 @@
             LengthMeaning.TabIndex = 23;
             LengthMeaning.Text = "100-200см";
             // 
-            // LengthBoardLabel
+            // LegHeightLabel
             // 
-            LengthBoardLabel.AutoSize = true;
-            LengthBoardLabel.Location = new Point(12, 130);
-            LengthBoardLabel.Name = "LengthBoardLabel";
-            LengthBoardLabel.Size = new Size(108, 20);
-            LengthBoardLabel.TabIndex = 36;
-            LengthBoardLabel.Text = "Длина ножки";
+            LegHeightLabel.AutoSize = true;
+            LegHeightLabel.Location = new Point(12, 130);
+            LegHeightLabel.Name = "LegHeightLabel";
+            LegHeightLabel.Size = new Size(114, 20);
+            LegHeightLabel.TabIndex = 36;
+            LegHeightLabel.Text = "Высота ножки";
             // 
-            // HeigthLegMeaning
+            // SeatWidthMeaning
             // 
-            HeigthLegMeaning.AutoSize = true;
-            HeigthLegMeaning.Location = new Point(318, 256);
-            HeigthLegMeaning.Name = "HeigthLegMeaning";
-            HeigthLegMeaning.Size = new Size(70, 20);
-            HeigthLegMeaning.TabIndex = 40;
-            HeigthLegMeaning.Text = "30-60см";
+            SeatWidthMeaning.AutoSize = true;
+            SeatWidthMeaning.Location = new Point(318, 256);
+            SeatWidthMeaning.Name = "SeatWidthMeaning";
+            SeatWidthMeaning.Size = new Size(70, 20);
+            SeatWidthMeaning.TabIndex = 40;
+            SeatWidthMeaning.Text = "30-60см";
             // 
-            // SeatHeightTextBox
+            // SeatWidthTextBox
             // 
-            SeatHeightTextBox.Location = new Point(176, 256);
-            SeatHeightTextBox.Name = "SeatHeightTextBox";
-            SeatHeightTextBox.Size = new Size(126, 27);
-            SeatHeightTextBox.TabIndex = 39;
+            SeatWidthTextBox.Location = new Point(176, 256);
+            SeatWidthTextBox.Name = "SeatWidthTextBox";
+            SeatWidthTextBox.Size = new Size(126, 27);
+            SeatWidthTextBox.TabIndex = 39;
             // 
-            // HeightLeg
+            // SeatWidthtLeg
             // 
-            HeightLeg.AutoSize = true;
-            HeightLeg.Location = new Point(12, 256);
-            HeightLeg.Name = "HeightLeg";
-            HeightLeg.Size = new Size(135, 20);
-            HeightLeg.TabIndex = 38;
-            HeightLeg.Text = "Ширина сидушки";
+            SeatWidthtLeg.AutoSize = true;
+            SeatWidthtLeg.Location = new Point(12, 256);
+            SeatWidthtLeg.Name = "SeatWidthtLeg";
+            SeatWidthtLeg.Size = new Size(131, 20);
+            SeatWidthtLeg.TabIndex = 38;
+            SeatWidthtLeg.Text = "Ширина сиденья";
             // 
             // ButtonKOMPAC
             // 
@@ -187,45 +187,44 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(413, 394);
             Controls.Add(ButtonKOMPAC);
-            Controls.Add(HeigthLegMeaning);
-            Controls.Add(SeatHeightTextBox);
-            Controls.Add(HeightLeg);
-            Controls.Add(LengthBoardLabel);
-            Controls.Add(WidthBoardMeaning);
-            Controls.Add(LengthBoardMeaning);
-            Controls.Add(HeigthMeaning);
+            Controls.Add(SeatWidthMeaning);
+            Controls.Add(SeatWidthTextBox);
+            Controls.Add(SeatWidthtLeg);
+            Controls.Add(LegHeightLabel);
+            Controls.Add(LegLengthMeaning);
+            Controls.Add(LegHeightMeaning);
+            Controls.Add(SeatHeigthMeaning);
             Controls.Add(LengthMeaning);
-            Controls.Add(LegWidthTextBox);
             Controls.Add(LegLengthTextBox);
-            Controls.Add(HeightTextBox);
+            Controls.Add(LegHeightTextBox);
+            Controls.Add(SeatHeightTextBox);
             Controls.Add(LengthTextBox);
-            Controls.Add(WidthBoardLabel);
-            Controls.Add(HeightLabel);
+            Controls.Add(LegLengthLabel);
+            Controls.Add(SeatHeightLabel);
             Controls.Add(lengthLabel);
             MinimumSize = new Size(223, 200);
             Name = "MainViewModel";
             Text = "Panel";
-            Load += MainViewModel_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Label lengthLabel;
-        private Label HeightLabel;
-        private Label WidthBoardLabel;
+        private Label SeatHeightLabel;
+        private Label LegLengthLabel;
         private TextBox LengthTextBox;
-        private TextBox HeightTextBox;
-        private TextBox LegLengthTextBox;
-        private TextBox LegWidthTextBox;
-        private Label WidthBoardMeaning;
-        private Label LengthBoardMeaning;
-        private Label HeigthMeaning;
-        private Label LengthMeaning;
-        private Label LengthBoardLabel;
-        private Label HeigthLegMeaning;
         private TextBox SeatHeightTextBox;
-        private Label HeightLeg;
+        private TextBox LegHeightTextBox;
+        private TextBox LegLengthTextBox;
+        private Label LegLengthMeaning;
+        private Label LegHeightMeaning;
+        private Label SeatHeigthMeaning;
+        private Label LengthMeaning;
+        private Label LegHeightLabel;
+        private Label SeatWidthMeaning;
+        private TextBox SeatWidthTextBox;
+        private Label SeatWidthtLeg;
         private Button ButtonKOMPAC;
         private object ButtonOpenGL_Click;
     }

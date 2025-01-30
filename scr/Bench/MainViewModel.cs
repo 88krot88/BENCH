@@ -8,7 +8,7 @@ namespace Bench
         private BenchWrapper _benchWrapper;
 
         /// <summary>
-        /// Экземпляр класса BenchBuilder для построения скамьи.
+        /// Экземпляр класса BenchWrapper для построения скамьи.
         /// </summary>
         private BenchBuilder _benchBuilder;
 
@@ -22,83 +22,67 @@ namespace Bench
             _benchBuilder = new BenchBuilder(_benchWrapper);
         }
 
+        /// <summary>
+        /// Обработчик события клика по кнопке для валидации и установки значений параметров скамьи.
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший событие.</param>
+        /// <param name="e">Аргументы события.</param>
         private void BuildButton_Click(object sender, EventArgs e)
         {
-            var parameters = new Dictionary<TextBox, (string Name, Func<double, double> Validator)>
+            var errors = new List<string>();
+            var benchParameters = new BenchParameters();
+
+            // Список параметров скамьи и соответствующих текстовых полей
+            var properties = new (Action<BenchParameters, double> SetProperty, string UserInput, TextBox TextBox, string ParameterName)[]
             {
-                { LengthTextBox, ("Длина скамьи", value => Validator.SetValueInRange(value, 100, 200, "Длина скамьи")) },
-                { HeightTextBox, ("Высота скамьи", value => Validator.SetValueInRange(value, 50, 70, "Высота скамьи")) },
-                { LegLengthTextBox, ("Длина ножки", value => Validator.SetValueInRange(value, 20, 30, "Длина ножки")) },
-                { LegWidthTextBox, ("Ширина ножки", value => Validator.SetValueInRange(value, 30, 60, "Ширина ножки")) },
-                { SeatHeightTextBox, ("Ширина сиденья", value => Validator.SetValueInRange(value, 30, 60, "Ширина сиденья")) }
+                ((obj, value) => obj.BenchLength = value, LengthTextBox.Text, LengthTextBox, BenchParameters.BenchLengthName),
+                ((obj, value) => obj.SeatHeight = value, SeatHeightTextBox.Text, SeatHeightTextBox, BenchParameters.SeatHeightName),
+                ((obj, value) => obj.LegHeight = value, LegHeightTextBox.Text, LegHeightTextBox, BenchParameters.LegHeightName),
+                ((obj, value) => obj.LegLength = value, LegLengthTextBox.Text, LegLengthTextBox, BenchParameters.LegLengthName),
+                ((obj, value) => obj.SeatWidth = value, SeatWidthTextBox.Text, SeatWidthTextBox, BenchParameters.SeatWidthName)
             };
 
-            var errors = new List<string>();
-            var validatedValues = new List<double>();
-
-            foreach (var (textBox, (paramName, validator)) in parameters)
+            foreach (var property in properties)
             {
-                try
-                {
-                    double value = Validator.ConvertToDouble(textBox.Text, paramName);
-                    value = validator(value);
+                property.TextBox.BackColor = Color.LightGreen;
 
-                    textBox.BackColor = Color.LightGreen;
-                    validatedValues.Add(value);
-                }
-                catch (ArgumentException ex)
+                if (!ValidateAndSetProperty(property, benchParameters, errors))
                 {
-                    textBox.BackColor = Color.LightCoral;
-                    errors.Add(ex.Message);
+                    property.TextBox.BackColor = Color.LightCoral;
                 }
             }
 
-            if (errors.Count > 0)
+            if (errors.Any())
             {
                 MessageBox.Show(string.Join(Environment.NewLine, errors), "Ошибки ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
-
-            try
+            else
             {
-                var benchParameters = new BenchParameters(
-                    validatedValues[0], // Длина скамьи
-                    validatedValues[1], // Высота скамьи
-                    validatedValues[2], // Длина ножки
-                    validatedValues[3], // Ширина ножки
-                    validatedValues[4]  // Ширина сиденья
-                );
-
                 _benchWrapper.ConnectToKompas();
                 _benchBuilder.BuildBench(benchParameters);
-
-                MessageBox.Show("Скамья успешно построена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ResetTextBoxColors();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Сбрасывает цвета текстбоксов в стандартное состояние.
+        /// Метод для валидации и установки значения для параметра скамьи.
         /// </summary>
-        private void ResetTextBoxColors()
+        /// <param name="property">Кортеж с действием установки значения, строкой ввода, текстовым полем и именем параметра.</param>
+        /// <param name="benchParameters">Объект скамьи, в который будут установлены значения.</param>
+        /// <param name="errors">Список ошибок, в который добавляются сообщения об ошибках.</param>
+        /// <returns>Возвращает true, если значение корректное, иначе false.</returns>
+        private bool ValidateAndSetProperty((Action<BenchParameters, double> SetProperty, string UserInput, TextBox TextBox, string ParameterName) property, BenchParameters benchParameters, List<string> errors)
         {
-            var textBoxes = new[] { LengthTextBox, HeightTextBox, LegLengthTextBox, LegWidthTextBox, SeatHeightTextBox };
-            foreach (var textBox in textBoxes)
+            try
             {
-                textBox.BackColor = SystemColors.Window;
+                var value = Validator.ConvertToDouble(property.UserInput, property.ParameterName);
+                property.SetProperty(benchParameters, value);
+                return true;
             }
-        }
-
-        /// <summary>
-        /// Минимальный размер окна.
-        /// </summary>
-        private void MainViewModel_Load(object sender, EventArgs e)
-        {
-            this.MinimumSize = new Size(450, 430);
+            catch (ArgumentException ex)
+            {
+                errors.Add(ex.Message);
+                return false;
+            }
         }
     }
 }

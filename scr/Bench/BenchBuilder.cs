@@ -59,14 +59,11 @@ namespace Bench
         /// <param name="parameters">Параметры скамьи.</param>
         private void BuildLegs(ksPart part, BenchParameters parameters)
         {
-            BuildBoard(part, parameters.LegWidth, parameters.LegWidth, parameters.LegLength, 0, 0);
-            BuildBoard(
-                part,
-                parameters.LegWidth,
-                parameters.LegWidth,
-                parameters.LegLength,
-                parameters.BenchLength - parameters.LegWidth,
-                0);
+            double H2 = parameters.LegLength; // Высота ножек
+            double L2 = parameters.SeatWidth; // Длина ножек (ширина боковины)
+
+            BuildBoard(part, L2, L2, H2, 0, 0);
+            BuildBoard(part, L2, L2, H2, parameters.BenchLength - L2, 0);
         }
 
         /// <summary>
@@ -76,8 +73,13 @@ namespace Bench
         /// <param name="parameters">Параметры скамьи.</param>
         private void BuildSeat(ksPart part, BenchParameters parameters)
         {
-            var thickness = 20; // Фиксированная толщина сидушки
-            BuildBoard(part, parameters.BenchLength, parameters.SeatWidth, thickness, 0, parameters.LegLength);
+            double thickness = 20; // Фиксированная толщина сидушки
+            double H1 = parameters.SeatHeight; // Высота сиденья
+            double H2 = parameters.LegLength; // Высота ножек
+            double L = parameters.BenchLength; // Длина скамьи
+            double L2 = parameters.SeatWidth; // Ширина сиденья = ширина ножек
+
+            BuildBoard(part, L, L2, thickness, 0, H2);
         }
 
         /// <summary>
@@ -85,17 +87,17 @@ namespace Bench
         /// </summary>
         /// <param name="part">Экземпляр класса ksPart для создания нового элемента модели.</param>
         /// <param name="boardLength">Длина доски.</param>
-        /// <param name="boardWidth">Ширина доски.</param>
         /// <param name="boardThickness">Толщина доски.</param>
+        /// <param name="boardWidth">Ширина доски.</param>
         /// <param name="boardOffsetX">Смещение по X.</param>
         /// <param name="boardOffsetY">Смещение по Y.</param>
         private void BuildBoard(
-    ksPart part,
-    double boardLength,
-    double boardThickness, // Толщина теперь идет вторым параметром
-    double boardWidth, // А ширина — третьим
-    double boardOffsetX,
-    double boardOffsetY)
+            ksPart part,
+            double boardLength,
+            double boardThickness, // Толщина теперь идет вторым параметром
+            double boardWidth, // А ширина — третьим
+            double boardOffsetX,
+            double boardOffsetY)
         {
             var sketchEntity = (ksEntity)part.NewEntity((short)Obj3dType.o3d_sketch);
             var sketchDef = (ksSketchDefinition)sketchEntity.GetDefinition();
