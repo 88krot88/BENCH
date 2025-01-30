@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bench", "Bench\Bench.csproj", "{F5DB10FF-5C6C-49B9-8A0D-612E2328A9E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBench", "TestBench\TestBench.csproj", "{A387432A-9211-4A63-AFDD-D017975B0FF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBench", "TestBench\TestBench.csproj", "{A387432A-9211-4A63-AFDD-D017975B0FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StressTesting", "StressTesting\StressTesting.csproj", "{95AC53EC-5915-4F46-8576-3BB592C847C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A387432A-9211-4A63-AFDD-D017975B0FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A387432A-9211-4A63-AFDD-D017975B0FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A387432A-9211-4A63-AFDD-D017975B0FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95AC53EC-5915-4F46-8576-3BB592C847C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AC53EC-5915-4F46-8576-3BB592C847C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AC53EC-5915-4F46-8576-3BB592C847C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AC53EC-5915-4F46-8576-3BB592C847C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
