@@ -1,4 +1,5 @@
 ﻿using Kompas6API5;
+using System.Runtime.InteropServices;
 
 namespace Bench
 {
@@ -13,6 +14,12 @@ namespace Bench
 		private KompasObject _kompas;
 
 		/// <summary>
+		/// Имя идентификатора у приложения компас.
+		/// </summary>
+		private const string CompassProgramId = "KOMPAS.Application.5";
+
+
+		/// <summary>
 		/// Свойство для экземпляра класса KompasObject для взаимодействия с API Kompas-3D.
 		/// </summary>
 		public KompasObject Kompas => _kompas;
@@ -22,13 +29,16 @@ namespace Bench
 		/// </summary>
 		public void ConnectToKompas()
 		{
-			if (_kompas != null)
+			try
 			{
-				return;
+				_kompas = (KompasObject)MyMarshal.GetActiveObject(CompassProgramId);
 			}
-			
-			var kompasType = Type.GetTypeFromProgID("KOMPAS.Application.5");
-			_kompas = (KompasObject)Activator.CreateInstance(kompasType);
+			catch
+			{
+				var kompasType = Type.GetTypeFromProgID(CompassProgramId);
+				_kompas = (KompasObject)Activator.CreateInstance(kompasType);
+			}
+
 			_kompas.Visible = true;
 		}
 	}
