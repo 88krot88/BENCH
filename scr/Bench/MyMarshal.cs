@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace Bench
 {
 	/// <summary>
-	/// Нужен для реализации метода <see cref="GetActiveObject(string)"/>,
+	/// Необходим для реализации метода <see cref="GetActiveObject(string)"/>,
 	/// который доступен только в .Net Framework.
 	/// </summary>
 	public static class MyMarshal
 	{
 		/// <summary>
-		/// Получить обработчик программы по её айди.
+		/// Получает обработчик программы по ID.
 		/// </summary>
-		/// <param name="progID">Айди программы.</param>
+		/// <param name="progID">ID программы.</param>
 		/// <returns>Обработчик программы.</returns>
 		[SecurityCritical]
 		public static object GetActiveObject(string progID)

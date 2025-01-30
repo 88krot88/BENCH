@@ -1,6 +1,9 @@
 namespace Bench
 {
-    public partial class MainViewModel : Form
+	/// <summary>
+	/// Основная модель представления.
+	/// </summary>
+	public partial class MainViewModel : Form
     {
         /// <summary>
         /// Экземпляр класса BenchWrapper для подключения к Kompas-3D.
@@ -33,13 +36,38 @@ namespace Bench
             var benchParameters = new BenchParameters();
 
             // Список параметров скамьи и соответствующих текстовых полей
-            var properties = new (Action<BenchParameters, double> SetProperty, string UserInput, TextBox TextBox, string ParameterName)[]
+            var properties = new (
+                Action<BenchParameters, 
+                double> SetProperty, 
+                string UserInput, 
+                TextBox TextBox, 
+                string ParameterName
+            )[]
             {
-                ((obj, value) => obj.BenchLength = value, LengthTextBox.Text, LengthTextBox, BenchParameters.BenchLengthName),
-                ((obj, value) => obj.SeatHeight = value, SeatHeightTextBox.Text, SeatHeightTextBox, BenchParameters.SeatHeightName),
-                ((obj, value) => obj.LegHeight = value, LegHeightTextBox.Text, LegHeightTextBox, BenchParameters.LegHeightName),
-                ((obj, value) => obj.LegLength = value, LegLengthTextBox.Text, LegLengthTextBox, BenchParameters.LegLengthName),
-                ((obj, value) => obj.SeatWidth = value, SeatWidthTextBox.Text, SeatWidthTextBox, BenchParameters.SeatWidthName)
+                ((instance, value) => 
+                    instance.BenchLength = value, 
+                    LengthTextBox.Text, LengthTextBox, 
+                    BenchParameters.BenchLengthName),
+                ((instance, value) => 
+                    instance.SeatHeight = value, 
+                    SeatHeightTextBox.Text, 
+                    SeatHeightTextBox,
+                    BenchParameters.SeatHeightName),
+                ((instance, value) => 
+                    instance.LegHeight = value, 
+                    LegHeightTextBox.Text, 
+                    LegHeightTextBox, 
+                    BenchParameters.LegHeightName),
+                ((instance, value) => 
+                    instance.LegLength = value, 
+                    LegLengthTextBox.Text, 
+                    LegLengthTextBox, 
+                    BenchParameters.LegLengthName),
+                ((instance, value) => 
+                    instance.SeatWidth = value, 
+                    SeatWidthTextBox.Text, 
+                    SeatWidthTextBox, 
+                    BenchParameters.SeatWidthName)
             };
 
             foreach (var property in properties)
@@ -54,7 +82,12 @@ namespace Bench
 
             if (errors.Any())
             {
-                MessageBox.Show(string.Join(Environment.NewLine, errors), "Ошибки ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    string.Join(Environment.NewLine, errors), 
+                    "Ошибки ввода", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error
+                );
             }
             else
             {
@@ -70,7 +103,15 @@ namespace Bench
         /// <param name="benchParameters">Объект скамьи, в который будут установлены значения.</param>
         /// <param name="errors">Список ошибок, в который добавляются сообщения об ошибках.</param>
         /// <returns>Возвращает true, если значение корректное, иначе false.</returns>
-        private bool ValidateAndSetProperty((Action<BenchParameters, double> SetProperty, string UserInput, TextBox TextBox, string ParameterName) property, BenchParameters benchParameters, List<string> errors)
+        private bool ValidateAndSetProperty(
+            (Action<BenchParameters, 
+             double> SetProperty, 
+             string UserInput, 
+             TextBox TextBox, 
+             string ParameterName) property, 
+            BenchParameters benchParameters, 
+            List<string> errors
+        )
         {
             try
             {

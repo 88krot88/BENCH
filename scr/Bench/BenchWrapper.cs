@@ -14,10 +14,9 @@ namespace Bench
 		private KompasObject _kompas;
 
 		/// <summary>
-		/// Имя идентификатора у приложения компас.
+		/// Имя идентификатора Kompas-3D.
 		/// </summary>
 		private const string CompassProgramId = "KOMPAS.Application.5";
-
 
 		/// <summary>
 		/// Свойство для экземпляра класса KompasObject для взаимодействия с API Kompas-3D.

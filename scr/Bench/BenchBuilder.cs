@@ -59,11 +59,11 @@ namespace Bench
         /// <param name="parameters">Параметры скамьи.</param>
         private void BuildLegs(ksPart part, BenchParameters parameters)
         {
-            double H2 = parameters.LegLength; // Высота ножек
-            double L2 = parameters.SeatWidth; // Длина ножек (ширина боковины)
+            var length = parameters.LegLength; 
+            var width = parameters.SeatWidth; 
 
-            BuildBoard(part, L2, L2, H2, 0, 0);
-            BuildBoard(part, L2, L2, H2, parameters.BenchLength - L2, 0);
+            BuildBoard(part, width, width, length, 0, 0);
+            BuildBoard(part, width, width, length, parameters.BenchLength - width, 0);
         }
 
         /// <summary>
@@ -73,13 +73,16 @@ namespace Bench
         /// <param name="parameters">Параметры скамьи.</param>
         private void BuildSeat(ksPart part, BenchParameters parameters)
         {
-            double thickness = 20; // Фиксированная толщина сидушки
-            double H1 = parameters.SeatHeight; // Высота сиденья
-            double H2 = parameters.LegLength; // Высота ножек
-            double L = parameters.BenchLength; // Длина скамьи
-            double L2 = parameters.SeatWidth; // Ширина сиденья = ширина ножек
+            var thickness = 20; 
 
-            BuildBoard(part, L, L2, thickness, 0, H2);
+            BuildBoard(
+                part, 
+                parameters.BenchLength, 
+                parameters.SeatWidth, 
+                thickness, 
+                0,
+                parameters.LegLength
+           );
         }
 
         /// <summary>
