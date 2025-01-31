@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bench", "Bench\Bench.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBench", "TestBench\TestBench.csproj", "{A387432A-9211-4A63-AFDD-D017975B0FF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StressTesting", "StressTesting\StressTesting.csproj", "{95AC53EC-5915-4F46-8576-3BB592C847C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StressTesting", "StressTesting\StressTesting.csproj", "{95AC53EC-5915-4F46-8576-3BB592C847C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
