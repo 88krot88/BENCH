@@ -2,35 +2,47 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using Bench;
 using Microsoft.VisualBasic.Devices;
 
 public class StressTest
 {
     public void Run()
     {
-        using (var streamWriter = new StreamWriter("log.txt"))
+        var builder = new BenchBuilder(new BenchWrapper());
+        var parameters = new BenchParameters(150, 17, 30, 35, 45);
+
+        // Очищаем файл перед началом работы
+        using (var streamWriter = new StreamWriter("log.txt", append: false))
         {
-            var startTime = DateTime.Now;  // Время начала теста
+            streamWriter.AutoFlush = true;
+
             var count = 0;
-            var elapsedSeconds = 0;
             const double gigabyteInByte = 0.000000000931322574615478515625;
-            var currentProcess = Process.GetCurrentProcess();
             var computerInfo = new ComputerInfo();
+            var startTime = DateTime.Now;
 
             while (true)
             {
-                elapsedSeconds = (int)(DateTime.Now - startTime).TotalSeconds; // Округляем время до целых секунд
+                var stopwatch = Stopwatch.StartNew();
 
-                var usedMemory = (computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory) * gigabyteInByte;
-                var cpuUsage = currentProcess.TotalProcessorTime.TotalMilliseconds;
+                // Высчитываем текущее время работы программы
+                TimeSpan elapsedTime = DateTime.Now - startTime;
+                int elapsedSeconds = (int)elapsedTime.TotalSeconds;
 
-                string logEntry = $"{++count}\t{elapsedSeconds} sec\t{usedMemory:F3} GB\t{cpuUsage} ms CPU";
+                double usedMemory = (computerInfo.TotalPhysicalMemory - computerInfo.AvailablePhysicalMemory) * gigabyteInByte;
+                string logEntry = $"{++count} 00:00:{elapsedSeconds:D2} {usedMemory:F9}";
+
+                // Вывод в консоль и запись в файл
                 Console.WriteLine(logEntry);
-                streamWriter.WriteLine(logEntry);
-                streamWriter.Flush();
+                Console.Out.Flush();
 
-                // Задержка 100 мс (чтобы было 10 записей в секунду)
+                streamWriter.WriteLine(logEntry);
+
+                // Ограничение скорости (ждем 100 мс перед следующей итерацией)
                 Thread.Sleep(100);
+
+                stopwatch.Stop();
             }
         }
     }
