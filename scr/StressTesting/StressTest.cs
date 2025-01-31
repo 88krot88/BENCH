@@ -9,8 +9,6 @@ public class StressTest
 {
     public void Run()
     {
-        var builder = new BenchBuilder(new BenchWrapper());
-        var parameters = new BenchParameters(150, 17, 30, 35, 45);
 
         // Очищаем файл перед началом работы
         using (var streamWriter = new StreamWriter("log.txt", append: false))
@@ -47,3 +45,4 @@ public class StressTest
         }
     }
 }
+
