@@ -55,6 +55,7 @@
         /// </summary>
         public const string SeatWidthName = "Ширина сиденья";
 
+        //TODO: RSDN
         /// <summary>
         /// Минимальная и максимальная длина скамьи.
         /// </summary>
@@ -88,6 +89,7 @@
             get => _benchLength;
             set
             {
+                //TODO: RSDN
                 _benchLength = Validator.SetValueInRange(value, MinBenchLength, MaxBenchLength, BenchLengthName);
             }
         }
@@ -100,6 +102,7 @@
             get => _seatHeight;
             set
             {
+                //TODO: RSDN
                 _seatHeight = Validator.SetValueInRange(value, MinSeatHeight, MaxSeatHeight, SeatHeightName);
             }
         }
@@ -112,6 +115,7 @@
             get => _legHeight;
             set
             {
+                //TODO: RSDN
                 _legHeight = Validator.SetValueInRange(value, MinLegHeight, MaxLegHeight, LegHeightName);
             }
         }
@@ -124,6 +128,7 @@
             get => _legLength;
             set
             {
+                //TODO: RSDN
                 _legLength = Validator.SetValueInRange(value, MinLegLength, MaxLegLength, LegLengthName);
             }
         }
@@ -136,6 +141,7 @@
             get => _seatWidth;
             set
             {
+                //TODO: RSDN
                 _seatWidth = Validator.SetValueInRange(value, MinSeatWidth, MaxSeatWidth, SeatWidthName);
             }
         }

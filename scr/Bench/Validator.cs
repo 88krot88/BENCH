@@ -30,8 +30,8 @@ namespace Bench
 			{
 				return value;
 			}
-
-			throw new ArgumentException($"Параметр '{parameterName}' должен быть в пределах {minimumValue} - {maximumValue}.");
+            //TODO: RSDN
+            throw new ArgumentException($"Параметр '{parameterName}' должен быть в пределах {minimumValue} - {maximumValue}.");
 		}
 
 		/// <summary>
