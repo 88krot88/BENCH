@@ -57,29 +57,54 @@
 
         //TODO: RSDN
         /// <summary>
-        /// Минимальная и максимальная длина скамьи.
+        /// Минимальная длина скамьи.
         /// </summary>
-        private const double MinBenchLength = 100, MaxBenchLength = 200;
+        private const double MinBenchLength = 100;
 
         /// <summary>
-        /// Минимальная и максимальная высота сиденья.
-        /// </summary>
-        private const double MinSeatHeight = 10, MaxSeatHeight = 25;
+		/// Максимальная длина скамьи.
+		/// </summary>
+        private const double MaxBenchLength = 200;
 
         /// <summary>
-        /// Минимальная и максимальная высота ножки.
+        /// Минимальная высота сиденья.
         /// </summary>
-        private const double MinLegHeight = 20, MaxLegHeight = 40;
+        private const double MinSeatHeight = 10;
 
         /// <summary>
-        /// Минимальная и максимальная длина ножки.
+        /// Максимальная высота сиденья.
         /// </summary>
-        private const double MinLegLength = 20, MaxLegLength = 50;
+        private const double MaxSeatHeight = 25;
 
         /// <summary>
-        /// Минимальная и максимальная ширина сиденья.
+        /// Минимальная высота ножки.
         /// </summary>
-        private const double MinSeatWidth = 30, MaxSeatWidth = 60;
+        private const double MinLegHeight = 20;
+
+        /// <summary>
+        /// Максимальная высота ножки.
+        /// </summary>
+        private const double MaxLegHeight = 40;
+
+        /// <summary>
+        /// Минимальная длина ножки.
+        /// </summary>
+        private const double MinLegLength = 20;
+
+        /// <summary>
+        /// Максимальная длина ножки.
+        /// </summary>
+        private const double MaxLegLength = 50;
+
+        /// <summary>
+        /// Минимальная ширина сиденья.
+        /// </summary>
+        private const double MinSeatWidth = 30;
+
+        /// <summary>
+        /// Максимальная ширина сиденья.
+        /// </summary>
+        private const double MaxSeatWidth = 60;
 
         /// <summary>
         /// Свойство для длины скамьи.
@@ -90,7 +115,12 @@
             set
             {
                 //TODO: RSDN
-                _benchLength = Validator.SetValueInRange(value, MinBenchLength, MaxBenchLength, BenchLengthName);
+                _benchLength = Validator.SetValueInRange(
+                    value, 
+                    MinBenchLength, 
+                    MaxBenchLength, 
+                    BenchLengthName
+                );
             }
         }
 
@@ -103,7 +133,12 @@
             set
             {
                 //TODO: RSDN
-                _seatHeight = Validator.SetValueInRange(value, MinSeatHeight, MaxSeatHeight, SeatHeightName);
+                _seatHeight = Validator.SetValueInRange(
+                    value, 
+                    MinSeatHeight, 
+                    MaxSeatHeight, 
+                    SeatHeightName
+                );
             }
         }
 
@@ -116,7 +151,12 @@
             set
             {
                 //TODO: RSDN
-                _legHeight = Validator.SetValueInRange(value, MinLegHeight, MaxLegHeight, LegHeightName);
+                _legHeight = Validator.SetValueInRange(
+                    value, 
+                    MinLegHeight, 
+                    MaxLegHeight, 
+                    LegHeightName
+                );
             }
         }
 
@@ -129,7 +169,12 @@
             set
             {
                 //TODO: RSDN
-                _legLength = Validator.SetValueInRange(value, MinLegLength, MaxLegLength, LegLengthName);
+                _legLength = Validator.SetValueInRange(
+                    value, 
+                    MinLegLength, 
+                    MaxLegLength, 
+                    LegLengthName
+                );
             }
         }
 
@@ -142,7 +187,12 @@
             set
             {
                 //TODO: RSDN
-                _seatWidth = Validator.SetValueInRange(value, MinSeatWidth, MaxSeatWidth, SeatWidthName);
+                _seatWidth = Validator.SetValueInRange(
+                    value, 
+                    MinSeatWidth, 
+                    MaxSeatWidth, 
+                    SeatWidthName
+                );
             }
         }
 

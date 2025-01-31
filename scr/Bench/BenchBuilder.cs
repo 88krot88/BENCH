@@ -63,7 +63,14 @@ namespace Bench
             var width = parameters.SeatWidth; 
 
             BuildBoard(part, width, width, length, 0, 0);
-            BuildBoard(part, width, width, length, parameters.BenchLength - width, 0);
+            BuildBoard(
+                part, 
+                width, 
+                width, 
+                length, 
+                parameters.BenchLength - width, 
+                0
+            );
         }
 
         /// <summary>
@@ -82,7 +89,7 @@ namespace Bench
                 thickness, 
                 0,
                 parameters.LegLength
-           );
+            );
         }
 
         /// <summary>
